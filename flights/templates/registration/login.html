@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Passenger Log In{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                        {% endif %}
+                        <form role="form" action="{% url 'view_booking'%}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                          <fieldset>
+                            <legend>Download Ticket</legend>
+                            <div class="form-group">
+                              <label for="pnr1">PNR NO</label>
+                              <input type="text" class="form-control" id="pnr1" name="pnr" aria-describedby="emailHelp" placeholder="Enter PNR no">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
